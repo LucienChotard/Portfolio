@@ -39,7 +39,20 @@ body {
   .slide .info .hidden-desc {
     color: #232323 !important; }
   .slide .info .headline {
-    z-index: 1; }
+    z-index: 1;
+    position: relative; }
+    .slide .info .headline:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-bottom: solid 2px #ffffff40;
+      transform: scaleX(1);
+      transform-origin: right;
+      transition: all 0.7s ease-in-out; }
+    .slide .info .headline.transition-headline:after {
+      transform: scaleX(0);
+      transition: all 0.7s ease-in-out; }
     .slide .info .headline #context {
       display: flex;
       flex-direction: column;
