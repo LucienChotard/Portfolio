@@ -1,0 +1,117 @@
+body{
+  height: 100vh;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  max-height: 100vh;
+  background: linear-gradient(45deg, black, #404040);
+}
+.container{
+  overflow:hidden;
+  #header{
+    position: fixed;
+    top:40px;
+    #logo{
+      width: 150px;
+      top:60px;
+    }
+  }
+}
+.slide{
+  .project-img{
+    border-radius: 25px;
+    height: auto;
+    opacity: 0.2;
+    transform: translateX(200px);
+    transition: all 0.6s ease-in-out;
+    z-index: 0;
+    margin-bottom: 25px;
+  }
+  .project-img.img-active{
+    z-index: 0;
+    opacity: 1;
+    transform: translateX(0px);
+    transition: all 0.6s ease-in-out; 
+  }
+  .info{
+    padding-right: 25px;
+    .hidden{
+      transform: translateY(120%) !important;
+    }
+    .hidden-context{
+      clip-path: inset(0 100% 0 0) !important;
+    }
+    .hidden-title{
+      color:#FFB951!important;
+      clip-path: inset(0 0 0 100%) !important;
+    }
+    .hidden-desc{
+      color:#232323 !important;
+    }
+    .headline{
+      z-index: 1;
+      border-bottom: solid 2px #ffffff40;
+      #context{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        clip-path: inset(0 0 0 0);
+        transition: all 0.4s ease-out;
+        #tag{
+          font-size: 18px;
+          color:#727272;
+          text-transform: uppercase;
+          font-family: OpenSansBlack;
+        }
+        #year{
+          font-size: 32px;
+          color:#FFB951;
+          font-family: OpenSansBlack;
+        }
+      }
+      h2{
+        color:#ffffff;
+        text-transform: uppercase;
+        padding: 25px 0px;
+        width: 250px;
+        min-width: 250px;
+        font-family: OpenSansBlack;
+        clip-path: inset(0 0 0 0);
+        transition: all 0.4s ease-out;
+      }
+    }
+    #desc{
+      z-index: 2;
+      position: relative;
+      color:#C5C5C5;
+      padding: 30px 0px;
+      font-family: OpenSansBold;
+      transition: all 0.4s ease-out;
+    }
+    #btn{
+      display: block;
+      text-decoration: none;
+      padding: 10px 0px;
+      color:white;
+      font-family: OpenSansBold;
+    }
+  }
+  nav{
+    background: #232323;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    img{
+      cursor: pointer;
+      padding:20px 15px;
+      &:last-child{
+        transform: rotateX(180deg);
+      }
+      &.btn-hidden{
+        filter: invert(0.6);
+        cursor: not-allowed;
+      }
+    }
+  }
+}
