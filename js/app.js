@@ -86,11 +86,8 @@ class projectSlider{
   }
   seek(target,that){
     if(document.body.offsetWidth < 960){
-      this.mobileTranslateIncrement = 0
       document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
       if(target>=this.nbImg || target<0){
-        this.mobileTranslateIncrement = 0
-        this.curIndex =0
       }
       else{ 
         this.curIndex=target
@@ -102,11 +99,8 @@ class projectSlider{
     else
     {
       this.imgHeight = document.querySelector('.project-img').getBoundingClientRect().height
-      this.imgIncr = this.imgHeight/2
       document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
       if(target>=this.nbImg || target<0){
-        this.imgIncr = this.imgHeight/2
-        this.curIndex = 0
       }
       else{
         this.curIndex=target
@@ -132,3 +126,15 @@ function doneResizing(){
   console.log('ok')
     slider.seek(slider.curIndex,slider)
 }
+
+window.addEventListener('wheel', function(event)
+{
+ if (event.deltaY < 0)
+ {
+  slider.seek(slider.curIndex-1,slider)
+ }
+ else if (event.deltaY > 0)
+ {
+  slider.seek(slider.curIndex+1,slider)
+ }
+});
