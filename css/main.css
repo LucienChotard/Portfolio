@@ -226,15 +226,12 @@ body {
       .container .slide nav {
         flex-direction: column;
         z-index: 2;
-        height: auto;
-        padding-left: 20px; }
+        height: auto; }
         .container .slide nav #slider-nav {
           flex-direction: column;
           align-items: center; }
           .container .slide nav #slider-nav div {
-            margin: 10px 0;
-            width: 10px;
-            height: 10px; } }
+            margin: 10px 0; } }
 @media screen and (min-width: 1260px) {
   #header {
     width: 1265px !important; }
