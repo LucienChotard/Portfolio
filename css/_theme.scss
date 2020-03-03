@@ -33,7 +33,7 @@ body{
     transition: all 0.6s ease-in-out; 
   }
   .info{
-    padding-right: 25px;
+    margin-right: 25px;
     .hidden{
       transform: translateY(120%) !important;
     }
@@ -49,7 +49,21 @@ body{
     }
     .headline{
       z-index: 1;
-      border-bottom: solid 2px #ffffff40;
+      position: relative;
+      &:after{
+        content:"";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-bottom:solid 2px #ffffff40;
+        transform: scaleX(1);
+        transform-origin: right;
+        transition: all 0.7s ease-in-out;
+      }
+      &.transition-headline:after{
+        transform: scaleX(0);
+        transition: all 0.7s ease-in-out;
+      }
       #context{
         display: flex;
         flex-direction: column;
