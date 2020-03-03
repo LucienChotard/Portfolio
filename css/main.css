@@ -39,7 +39,8 @@ body {
   .slide .info .hidden-desc {
     color: #232323 !important; }
   .slide .info .headline {
-    z-index: 1; }
+    z-index: 1;
+    border-bottom: solid 2px #ffffff40; }
     .slide .info .headline #context {
       display: flex;
       flex-direction: column;

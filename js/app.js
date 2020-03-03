@@ -106,7 +106,7 @@ class projectSlider{
       document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
       if(target>=this.nbImg || target<0){
         this.imgIncr = this.imgHeight/2
-        this.curIndex =0
+        this.curIndex = 0
       }
       else{
         this.curIndex=target
