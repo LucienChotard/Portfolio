@@ -70,7 +70,6 @@ class projectSlider{
     that.context.classList.toggle('hidden-context')
     that.title.classList.toggle('hidden-title')
     that.desc.classList.toggle('hidden-desc')
-    that.headline.classList.toggle('transition-headline')
 
     setTimeout(function(){
       that.tag.innerHTML=that.data[that.curIndex][0]
@@ -82,7 +81,6 @@ class projectSlider{
       that.context.classList.toggle('hidden-context')
       that.title.classList.toggle('hidden-title')
       that.desc.classList.toggle('hidden-desc')
-      that.headline.classList.toggle('transition-headline')
     }, 600);
     document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
   }
