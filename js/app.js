@@ -8,6 +8,9 @@ class projectSlider{
     this.mobileTranslateIncrementUnit = 100 / this.nbImg
     this.mobileTranslateIncrement
     this.curIndex=0
+    this.sliderNav=document.querySelector('#slider-nav')
+    this.sliderNavItems=[]
+    this.imgAray=document.querySelectorAll('.project-img')
     this.imgHeight = document.querySelector('.project-img').getBoundingClientRect().height
     this.imgWidth = document.querySelector('.project-img').getBoundingClientRect().width
     this.imgIncr = this.imgHeight/2
@@ -29,7 +32,23 @@ class projectSlider{
     let that = this
     this.btnNext.addEventListener('click',function(){that.seek(that.curIndex+1,that)},false)
     this.btnPrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
+    this.setNav(that)
     this.setInfo(that)
+  }
+  setNav(that){
+    for(let e of that.imgAray){
+      let point = document.createElement('div')
+      point.setAttribute('data-id',e.getAttribute('data-id'))
+      that.sliderNav.appendChild(point)
+      point.addEventListener('click',function(){that.seek(point.getAttribute('data-id'))})
+      that.sliderNavItems.push(point)
+    }
+  }
+  checkNav(that){
+    for(let e of that.sliderNavItems){
+      e.classList.remove('nav-active')
+    }
+    that.sliderNavItems[that.curIndex].classList.add('nav-active')
   }
   setBtn(that){
     if(this.curIndex+2>this.nbImg){
@@ -47,6 +66,7 @@ class projectSlider{
   }
   setInfo(that){
     that.setBtn(that)
+    that.checkNav(that)
     that.context.classList.toggle('hidden-context')
     that.title.classList.toggle('hidden-title')
     that.desc.classList.toggle('hidden-desc')
@@ -65,7 +85,6 @@ class projectSlider{
     document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
   }
   seek(target,that){
-    let oldIndex = that.curIndex
     if(document.body.offsetWidth < 960){
       this.mobileTranslateIncrement = 0
       document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')

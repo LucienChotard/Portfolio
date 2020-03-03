@@ -3,7 +3,6 @@ body{
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  max-height: 100vh;
   background: linear-gradient(45deg, black, #404040);
 }
 .container{
@@ -97,11 +96,23 @@ body{
     }
   }
   nav{
-    background: #232323;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     height: 150px;
+    #slider-nav{
+      display: flex;
+      flex-direction: row;
+      div{
+        margin:0 10px ;
+        width:20px;
+        height: 20px;
+        border-radius:100%;
+        background: #ffffff40;
+        &.nav-active{
+          background:white;
+        }
+      }
+    }
     img{
       cursor: pointer;
       padding:20px 15px;
