@@ -1,9 +1,33 @@
+let nbImg = 4
+let mobileWrapper = document.querySelector('.mobile-wrapper')
+let data = [
+  ["#branding","2020","Paralelle","In this school project, we had to write and design a press magazine from scratch.<br> We chose to write our magazine about the paralelle between sciences and arts.","img/project/0.jpg"],
+  ["#dev","2019","Karma","Our answer to a human problem : submarine pollution","img/project/2.jpg"],
+  ["#ui","2018","tst","Our answer to a human problem : submarine pollution","img/project/0.jpg"],
+  ["#3D","2017","tst2","bonjour merci aurevoir","img/project/0.jpg"]
+]
+
+function setImg(){
+  for(let i=0;i<nbImg;i++){
+    let link = document.createElement('a')
+    link.setAttribute('href','#')
+    let image = document.createElement('img')
+    image.setAttribute('data-id',i)
+    image.setAttribute('src',data[i][4])
+    image.classList.add('project-img')
+    link.appendChild(image)
+    mobileWrapper.appendChild(link)
+  }
+}
+
+setImg()
+
 class projectSlider{
   constructor(){
     this.btnNext=document.querySelector('#btn-next')
     this.btnPrev=document.querySelector('#btn-prev')
     this.imgWrapper = document.querySelector('.images-container')
-    this.mobileWrapper = document.querySelector('.mobile-wrapper')
+    this.mobileWrapper = mobileWrapper
     this.nbImg = this.mobileWrapper.childElementCount
     this.mobileTranslateIncrementUnit = 100 / this.nbImg
     this.mobileTranslateIncrement
@@ -21,12 +45,7 @@ class projectSlider{
     this.year = document.querySelector('#year')
     this.title = document.querySelector('#title')
     this.desc = document.querySelector('#desc')
-    this.data = [
-      ["#branding","2020","Paralelle","In this school project, we had to write and design a press magazine from scratch.<br> We chose to write our magazine about the paralelle between sciences and arts."],
-      ["#dev","2019","Karma","Our answer to a human problem : submarine pollution"],
-      ["#ui","2018","tst","Our answer to a human problem : submarine pollution"],
-      ["#3D","2017","tst2","bonjour merci aurevoir"]
-    ]
+    this.data = data
   }
   init(){
     let that = this

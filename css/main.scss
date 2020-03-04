@@ -19,6 +19,7 @@ $nbImg:4;
 $percentWidth:100%/$nbImg;
 $coefImg:1/$nbImg;
 
+// Display block liens, padding sur lien pas img
 
 // Mobile
 @media screen and (max-width: 959px) {
@@ -43,6 +44,7 @@ $coefImg:1/$nbImg;
       .info{
         align-self: stretch;
         padding: 0px;
+        margin-right: 0px;
         .headline{
           display: flex;
           justify-content: space-between;
@@ -100,6 +102,7 @@ $coefImg:1/$nbImg;
         padding: 0;
         width:  max-content;
         align-items: center;
+        margin-bottom: 20px;
         #slider-nav{
           display: inline-flex;
         }
@@ -127,6 +130,7 @@ $coefImg:1/$nbImg;
     justify-content: center;
     #header{
       width: 915px;
+      justify-content: space-between !important;
     }
     .slide{
       width: initial;
@@ -141,8 +145,12 @@ $coefImg:1/$nbImg;
         perspective: 800px;
         .mobile-wrapper{
           width: min-content;
+          a{
+            margin-bottom: 20px;
+          }
           .project-img{
             width: 450px;
+            margin-bottom: 20px;
           }
         }
       }
@@ -164,7 +172,7 @@ $coefImg:1/$nbImg;
         flex-direction: column;
         z-index: 2;
         height: auto;
-        padding-left: 20px;
+        padding-left: 10px;
         #slider-nav{
           flex-direction: column;
           align-items: center;
