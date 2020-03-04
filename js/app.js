@@ -40,7 +40,7 @@ class projectSlider{
       let point = document.createElement('div')
       point.setAttribute('data-id',e.getAttribute('data-id'))
       that.sliderNav.appendChild(point)
-      point.addEventListener('click',function(){that.seek(point.getAttribute('data-id'),that)})
+      point.addEventListener('click',function(){that.seek(parseInt(point.getAttribute('data-id')),that)})
       that.sliderNavItems.push(point)
     }
   }
