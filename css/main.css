@@ -15,7 +15,8 @@ body {
   justify-content: space-between;
   align-items: center; }
   #mobile-slider-nav .mobile-slider-nav-item {
-    padding: 20px; }
+    padding: 20px;
+    cursor: pointer; }
     #mobile-slider-nav .mobile-slider-nav-item img {
       width: 20px; }
     #mobile-slider-nav .mobile-slider-nav-item.btn-hidden img {
@@ -40,7 +41,8 @@ body {
           margin-left: 20px; }
         .container #header nav a.nav-item.nav-active {
           border-left: solid 4px;
-          padding-left: 5px; }
+          padding-left: 5px;
+          pointer-events: none; }
     .container #header #logo {
       width: 150px;
       top: 60px; }
@@ -54,6 +56,7 @@ body {
     height: auto;
     opacity: 0.2;
     filter: blur(30px);
+    pointer-events: none;
     transform: translateX(200px);
     transition: all 0.6s ease-in-out;
     z-index: 0;
@@ -61,17 +64,20 @@ body {
     .slide .project-img img {
       width: inherit;
       display: block;
-      transform: scale(1) rotateZ(0deg);
-      transition: all 0.3s ease-in; }
-      .slide .project-img img:hover {
-        transform: scale(1.1) rotateZ(3deg);
-        transition: all 0.3s ease-out; }
+      transition: all 0.5s ease-in; }
   .slide .project-img.img-active {
     z-index: 0;
     opacity: 1;
     transform: translateX(0px);
+    pointer-events: initial;
     filter: blur(0px);
     transition: all 0.6s ease-in-out; }
+    .slide .project-img.img-active img {
+      transform: scale(1) rotateZ(0deg);
+      transition: all 0.3s ease-in; }
+      .slide .project-img.img-active img:hover {
+        transform: scale(1.1) rotateZ(3deg);
+        transition: all 0.3s ease-out; }
   .slide .info {
     margin-right: 50px; }
     .slide .info .hidden {
@@ -131,6 +137,8 @@ body {
       display: flex;
       flex-direction: row; }
       .slide nav #slider-nav div {
+        cursor: pointer;
+        pointer-events: initial;
         font-family: OpenSansBold;
         font-size: 8px;
         margin: 0 10px;
@@ -145,6 +153,7 @@ body {
         border: solid 2px #ffffff00;
         transition: all 0.4s ease-in-out; }
         .slide nav #slider-nav div.nav-active {
+          pointer-events: none;
           border: solid 2px white;
           color: white;
           transition: all 0.4s ease-in-out; }
