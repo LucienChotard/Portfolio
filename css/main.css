@@ -162,7 +162,6 @@ body {
 
   .container {
     width: 80%;
-    overflow: initial;
     margin: 0 auto; }
     .container #header {
       display: flex;
