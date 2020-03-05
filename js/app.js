@@ -12,13 +12,23 @@ function setImg(){
     let link = document.createElement('a')
     link.setAttribute('href','#')
     let image = document.createElement('img')
-    image.setAttribute('data-id',i)
+    link.setAttribute('data-id',i)
+    link.classList.add('project-img')
     image.setAttribute('src',data[i][4])
-    image.classList.add('project-img')
     link.appendChild(image)
     mobileWrapper.appendChild(link)
   }
 }
+let slide= document.querySelector('.slide')
+let info= document.querySelector('.info')
+let navSlider = document.querySelector('#nav-slider')
+document.body.addEventListener('mousemove',function(event){
+  let x = (event.clientX - (document.body.offsetWidth/2))/30
+  let y = (event.clientY - (document.body.offsetHeight/2))/30
+  slide.style.transform="translate("+-x+"px,"+-y+"px)"
+  info.style.transform="translate("+(-x)/2+"px,"+(-y)/2+"px)"
+  navSlider.style.transform="translate("+(-x)/2+"px,"+(-y)/2+"px)"
+})
 
 setImg()
 

@@ -93,9 +93,13 @@ $coefImg:1/$nbImg;
              height: auto;
              width: $percentWidth;
              float: left;
-             opacity: 1;
+             overflow: hidden;
+             opacity:0.3;
              &.img-active{
                opacity: 1;
+             }
+             img{
+               width: 100%;
              }
           }
         }
