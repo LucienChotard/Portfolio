@@ -21,8 +21,12 @@ $coefImg:1/$nbImg;
 
 
 @media screen and (max-width: 959px) {
+  body{
+    height: 100vh;
+  }
   .container{
     width: 80%;
+    overflow: initial;
     margin: 0 auto;
     #header{
       display: flex;
@@ -89,7 +93,7 @@ $coefImg:1/$nbImg;
              height: auto;
              width: $percentWidth;
              float: left;
-             opacity: 0;
+             opacity: 1;
              &.img-active{
                opacity: 1;
              }
@@ -106,6 +110,7 @@ $coefImg:1/$nbImg;
 
 // Medium
 @media screen and (min-width: 960px) {
+  #mobile-slider-nav{display: none;}
   .container{
     width: 100vw;
     height: 100vh;
