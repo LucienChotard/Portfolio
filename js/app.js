@@ -26,6 +26,8 @@ class projectSlider{
   constructor(){
     this.btnNext=document.querySelector('#btn-next')
     this.btnPrev=document.querySelector('#btn-prev')
+    this.mobilePrev=document.querySelector('#mobile-prev')
+    this.mobileNext=document.querySelector('#mobile-next')
     this.imgWrapper = document.querySelector('.images-container')
     this.mobileWrapper = mobileWrapper
     this.nbImg = this.mobileWrapper.childElementCount
@@ -50,13 +52,16 @@ class projectSlider{
   init(){
     let that = this
     this.btnNext.addEventListener('click',function(){that.seek(that.curIndex+1,that)},false)
+    this.mobileNext.addEventListener('click',function(){that.seek(that.curIndex+1,that)},false)
     this.btnPrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
+    this.mobilePrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
     this.setNav(that)
     this.setInfo(that)
   }
   setNav(that){
     for(let e of that.imgAray){
       let point = document.createElement('div')
+      point.innerHTML="0"+e.getAttribute('data-id')
       point.setAttribute('data-id',e.getAttribute('data-id'))
       that.sliderNav.appendChild(point)
       point.addEventListener('click',function(){that.seek(parseInt(point.getAttribute('data-id')),that)})
@@ -72,15 +77,21 @@ class projectSlider{
   setBtn(that){
     if(this.curIndex+2>this.nbImg){
       this.btnNext.classList.add('btn-hidden')
+      this.mobileNext.classList.add('btn-hidden')
       this.btnPrev.classList.remove('btn-hidden')
+      this.mobilePrev.classList.remove('btn-hidden')
     }
     else if (this.curIndex-1<0) {
       this.btnPrev.classList.add('btn-hidden')
+      this.mobilePrev.classList.add('btn-hidden')
       this.btnNext.classList.remove('btn-hidden')
+      this.mobileNext.classList.remove('btn-hidden')
     }
     else {
       this.btnNext.classList.remove('btn-hidden')
+      this.mobileNext.classList.remove('btn-hidden')
       this.btnPrev.classList.remove('btn-hidden')
+      this.mobilePrev.classList.remove('btn-hidden')
     }
   }
   setInfo(that){
@@ -105,28 +116,28 @@ class projectSlider{
   }
   seek(target,that){
     if(document.body.offsetWidth < 960){
-      document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
       if(target>=this.nbImg || target<0){
       }
       else{ 
+        document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
         this.curIndex=target
         this.mobileTranslateIncrement = this.mobileTranslateIncrementUnit*target
+        this.setInfo(this)
+        this.imgWrapper.setAttribute( "style", "transform: translateX(-"+this.mobileTranslateIncrement+"%)!important" );
       }
-      this.setInfo(this)
-      this.imgWrapper.setAttribute( "style", "transform: translateX(-"+this.mobileTranslateIncrement+"%)!important" );
     }
     else
     {
       this.imgHeight = document.querySelector('.project-img').getBoundingClientRect().height
-      document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
       if(target>=this.nbImg || target<0){
       }
       else{
+        document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
         this.curIndex=target
-        this.imgIncr = (this.imgHeight/2)+this.imgHeight*target+25*target
+        this.imgIncr = (this.imgHeight/2)+this.imgHeight*target+20*target
+        this.setInfo(this)
+        this.imgWrapper.setAttribute( "style", "transform: translateY(calc(50% - "+that.imgIncr+"px))!important" );
       }
-      this.setInfo(this)
-      this.imgWrapper.setAttribute( "style", "transform: translateY(calc(50% - "+that.imgIncr+"px))!important" );
     }
   }
 }

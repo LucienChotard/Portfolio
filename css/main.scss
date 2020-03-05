@@ -19,14 +19,8 @@ $nbImg:4;
 $percentWidth:100%/$nbImg;
 $coefImg:1/$nbImg;
 
-// Display block liens, padding sur lien pas img
 
-// Mobile
 @media screen and (max-width: 959px) {
-  body{
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
   .container{
     width: 80%;
     margin: 0 auto;
@@ -34,13 +28,19 @@ $coefImg:1/$nbImg;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 40px 0;
+      margin-top: 20px;
+      margin-bottom: 40px;
       position: initial;
+      .nav-item.nav-active{
+        display: none;
+      }
+
     }
     .slide{
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
+      position: relative;
       .info{
         align-self: stretch;
         padding: 0px;
@@ -85,6 +85,7 @@ $coefImg:1/$nbImg;
         .mobile-wrapper{
           position: absolute;
           .project-img{
+             transform: translateX(0px);
              height: auto;
              width: $percentWidth;
              float: left;
@@ -96,25 +97,7 @@ $coefImg:1/$nbImg;
         }
       }
       nav{
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-        padding: 0;
-        width:  max-content;
-        align-items: center;
-        margin-bottom: 20px;
-        #slider-nav{
-          display: inline-flex;
-        }
-        img{
-          padding: 20px 20px;
-          &:first-child{
-            transform: rotateZ(-90deg);
-          }
-          &:last-child{
-            transform:rotateZ(90deg);
-          }
-        }
+        display: none;
       }
     }
   }
@@ -128,7 +111,9 @@ $coefImg:1/$nbImg;
     height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     #header{
+      align-self: flex-start;
       width: 915px;
       justify-content: space-between !important;
     }
@@ -139,7 +124,7 @@ $coefImg:1/$nbImg;
       .images-container{
         display: flex;
         flex-direction: column;
-        transform: translateY(calc(50% - 140.625px));
+        transform: translateY(calc(50% - 125px));
         transition: all 0.9s ease-in-out;
         line-height: 0;
         perspective: 800px;
@@ -149,7 +134,7 @@ $coefImg:1/$nbImg;
             margin-bottom: 20px;
           }
           .project-img{
-            width: 450px;
+            width: 400px;
             margin-bottom: 20px;
           }
         }
@@ -172,14 +157,12 @@ $coefImg:1/$nbImg;
         flex-direction: column;
         z-index: 2;
         height: auto;
-        padding-left: 10px;
+        margin-left: 20px;
         #slider-nav{
           flex-direction: column;
           align-items: center;
           div{
             margin:10px 0;
-            width: 10px;
-            height: 10px;
           }
         }
       }
@@ -193,13 +176,13 @@ $coefImg:1/$nbImg;
     width: 1265px !important;
   }
   .info{
-    width: 600px !important;
+    width: 450px !important;
   }
   .images-container{
     transform: translateY(calc(50% - 187.5px)) !important;
     .project-img{ 
-      min-width: 600px !important;
-      width: 600px !important;
+      min-width: 550px !important;
+      width: 550px !important;
       height: auto;
     }
   }
