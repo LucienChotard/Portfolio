@@ -3,7 +3,7 @@ let mobileWrapper = document.querySelector('.mobile-wrapper')
 let data = [
   ["#branding","2020","Paralelle","In this school project, we had to write and design a press magazine from scratch.<br> We chose to write our magazine about the paralelle between sciences and arts.","img/project/0.jpg"],
   ["#dev","2019","Karma","Our answer to a human problem : submarine pollution","img/project/2.jpg"],
-  ["#ui","2018","tst","Our answer to a human problem : submarine pollution","img/project/0.jpg"],
+  ["#ui","2018","tst","Our answer to a human problem : submarine pollution","img/project/3.jpg"],
   ["#3D","2017","tst2","bonjour merci aurevoir","img/project/0.jpg"]
 ]
 
@@ -23,11 +23,11 @@ let slide= document.querySelector('.slide')
 let info= document.querySelector('.info')
 let navSlider = document.querySelector('#nav-slider')
 document.body.addEventListener('mousemove',function(event){
-  let x = (event.clientX - (document.body.offsetWidth/2))/30
-  let y = (event.clientY - (document.body.offsetHeight/2))/30
-  slide.style.transform="translate("+-x+"px,"+-y+"px)"
-  info.style.transform="translate("+(-x)/2+"px,"+(-y)/2+"px)"
-  navSlider.style.transform="translate("+(-x)/2+"px,"+(-y)/2+"px)"
+  let x = (event.clientX - (document.body.offsetWidth/2))/60
+  let y = (event.clientY - (document.body.offsetHeight/2))/60
+  slide.style.transform="translate("+-x*2+"px,"+-y*2+"px)"
+  info.style.transform="translate("+(-x)+"px,"+(-y)+"px)"
+  navSlider.style.transform="translate("+(-x)+"px,"+(-y)+"px)"
 })
 
 setImg()
