@@ -69,9 +69,6 @@ class projectSlider{
     this.mobileNext.addEventListener('click',function(){that.seek(that.curIndex+1,that)},false)
     this.btnPrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
     this.mobilePrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
-    this.closeModalBtn.addEventListener('click',function(){
-      that.projectModal.classList.remove('project-active')
-    })
     this.setNav(that)
     this.setInfo(that)
   }
@@ -135,7 +132,7 @@ class projectSlider{
   }
   seek(target,that){
     if(document.body.offsetWidth < 960){
-      if(target>=this.nbImg || target<0 || this.projectModal.classList=="project-active"){
+      if(target>=this.nbImg || target<0){
       }
       else{ 
         document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
@@ -148,7 +145,7 @@ class projectSlider{
     else
     {
       this.imgHeight = document.querySelector('.project-img').getBoundingClientRect().height
-      if(target>=this.nbImg || target<0 || this.projectModal.classList=="project-active"){
+      if(target>=this.nbImg || target<0){
       }
       else{
         document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
@@ -178,11 +175,12 @@ function doneResizing(){
 
 window.addEventListener('wheel', function(event)
 {
- if (event.deltaY < 0)
+  console.log(event.deltaY*100)
+ if (event.deltaY*100 < 0)
  {
   slider.seek(slider.curIndex-1,slider)
  }
- else if (event.deltaY > 0)
+ else if (event.deltaY*100 > 0)
  {
   slider.seek(slider.curIndex+1,slider)
  }
