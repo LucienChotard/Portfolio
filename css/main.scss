@@ -109,6 +109,28 @@ $coefImg:1/$nbImg;
       }
     }
   }
+  #project{
+    #project-container{
+      width: 80%;
+      #project-info{
+        position: initial;
+        #btn-back{
+          margin:0;
+          text-align: left;
+          font-size: 13px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          img{
+            width: 70px;
+          }
+        }
+        #project-desc{
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 
@@ -177,6 +199,11 @@ $coefImg:1/$nbImg;
       }
     }
   }
+  #project{
+    #project-container{
+      width: 935px;
+    }
+  }
 }
 
 //Large
@@ -195,7 +222,13 @@ $coefImg:1/$nbImg;
       height: auto;
     }
   }
+  #project{
+    #project-container{
+      width: 1135px;
+    }
+  }
 }
+
 //Desktop
 @media screen and (min-width: 1850px) {
   #header{
@@ -206,6 +239,11 @@ $coefImg:1/$nbImg;
     .project-img{
       width: 800px !important;
       height: auto;
+    } 
+  }
+  #project{
+    #project-container{
+      width: 1385px;
     }
   }
 }

@@ -1,16 +1,17 @@
 let nbImg = 4
 let mobileWrapper = document.querySelector('.mobile-wrapper')
 let data = [
-  ["#branding","2020","Paralelle","In this school project, we had to write and design a press magazine from scratch.<br> We chose to write our magazine about the paralelle between sciences and arts.","img/project/0.jpg"],
-  ["#dev","2019","Karma","Our answer to a human problem : submarine pollution","img/project/2.jpg"],
-  ["#ui","2018","tst","Our answer to a human problem : submarine pollution","img/project/3.jpg"],
-  ["#3D","2017","tst2","bonjour merci aurevoir","img/project/0.jpg"]
+  ["#branding","2020","Paralelle","In this school project, we had to write and design a press magazine from scratch.<br> We chose to write our magazine about the paralelle between sciences and arts.","img/project/0.jpg","https://www.behance.net/gallery/92923891/Magazine-Parallele"],
+  ["#dev","2019","Karma","Our answer to a human problem : submarine pollution","img/project/2.jpg","https://www.behance.net/gallery/92868333/Apple-Homepod-concept-website"],
+  ["#ui","2018","tst","Our answer to a human problem : submarine pollution","img/project/3.jpg","https://www.behance.net/gallery/92923891/Magazine-Parallele"],
+  ["#3D","2017","tst2","bonjour merci aurevoir","img/project/0.jpg","https://www.behance.net/gallery/92923891/Magazine-Parallele"]
 ]
 
 function setImg(){
   for(let i=0;i<nbImg;i++){
     let link = document.createElement('a')
-    link.setAttribute('href','#')
+    link.setAttribute('href',data[i][5])
+    link.setAttribute('target','_blank')
     let image = document.createElement('img')
     link.setAttribute('data-id',i)
     link.classList.add('project-img')
@@ -58,6 +59,9 @@ class projectSlider{
     this.title = document.querySelector('#title')
     this.desc = document.querySelector('#desc')
     this.data = data
+    this.link = document.querySelector('#project-trigger')
+    this.projectModal= document.querySelector('#project')
+    this.closeModalBtn = document.querySelector('#btn-back')
   }
   init(){
     let that = this
@@ -65,6 +69,9 @@ class projectSlider{
     this.mobileNext.addEventListener('click',function(){that.seek(that.curIndex+1,that)},false)
     this.btnPrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
     this.mobilePrev.addEventListener('click',function(){that.seek(that.curIndex-1,that)},false)
+    this.closeModalBtn.addEventListener('click',function(){
+      that.projectModal.classList.remove('project-active')
+    })
     this.setNav(that)
     this.setInfo(that)
   }
@@ -123,10 +130,12 @@ class projectSlider{
       that.desc.classList.toggle('hidden-desc')
     }, 600);
     document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
+    that.link.setAttribute('data-id',document.querySelector('.img-active').getAttribute('data-id'))
+    that.link.setAttribute('href',data[document.querySelector('.img-active').getAttribute('data-id')][5])
   }
   seek(target,that){
     if(document.body.offsetWidth < 960){
-      if(target>=this.nbImg || target<0){
+      if(target>=this.nbImg || target<0 || this.projectModal.classList=="project-active"){
       }
       else{ 
         document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
@@ -139,7 +148,7 @@ class projectSlider{
     else
     {
       this.imgHeight = document.querySelector('.project-img').getBoundingClientRect().height
-      if(target>=this.nbImg || target<0){
+      if(target>=this.nbImg || target<0 || this.projectModal.classList=="project-active"){
       }
       else{
         document.querySelector('.project-img[data-id="'+this.curIndex+'"]').classList.toggle('img-active')
